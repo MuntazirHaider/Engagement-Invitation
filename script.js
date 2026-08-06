@@ -185,4 +185,26 @@ document.addEventListener('DOMContentLoaded', async () => {
             videoObserver.observe(video);
         });
     }
+
+    // --- Scroll Forwarding for Desktop ---
+    // If the user scrolls outside the cinematic wrapper (on the dark background)
+    window.addEventListener('wheel', (e) => {
+        const cinematicWrapper = document.getElementById('cinematic-wrapper');
+        // Only forward if the target isn't already inside the wrapper
+        if (cinematicWrapper && !cinematicWrapper.contains(e.target)) {
+            e.preventDefault(); // Stop default scroll
+
+            let delta = e.deltaY;
+            if (e.deltaMode === 0) { // DOM_DELTA_PIXEL
+                delta *= 1.5; // Standard multiplier, 5 was likely too fast without smooth scroll
+            }
+            
+            // Use behavior: 'auto' to bypass the CSS 'scroll-behavior: smooth'
+            // which was causing the lag by queuing up hundreds of smooth animations
+            cinematicWrapper.scrollBy({ 
+                top: delta, 
+                behavior: 'auto' 
+            });
+        }
+    }, { passive: false }); // Must be false to use e.preventDefault()
 });
