@@ -1,0 +1,302 @@
+Global Design Requirements (Add this at the top)
+
+Reference Website: https://pukhraj-poorva.pages.dev/
+
+Create a premium wedding invitation website inspired by the reference website while making it even more elegant, luxurious, smooth and polished.
+
+The overall theme should represent a Rich Royal Rajasthani Rajwadi Wedding with a timeless luxury aesthetic.
+
+Design Guidelines
+Every section must feel premium, cinematic and royal.
+Use elegant spacing with lots of breathing room.
+Never clutter the screen.
+The website should feel slow, graceful and luxurious rather than flashy.
+Maintain perfect visual consistency across all sections.
+Use warm ivory, beige, gold and soft cream colors throughout.
+Animations should never feel abrupt.
+Typography
+
+Typography is extremely important.
+
+Use an elegant hierarchy similar to luxury invitation cards.
+
+Headings should use an elegant luxury serif font.
+Decorative names should use a premium calligraphy font.
+Body text should use a clean readable serif font.
+Text should have generous line spacing.
+Text must remain perfectly readable on every background.
+Text Position & Alignment
+
+This is extremely important.
+
+Every text block must be visually centered within its safe area.
+Maintain consistent margins throughout.
+Never place text over visually busy areas.
+Always use the empty negative space available in the background videos.
+Text should never overlap architectural elements or important objects.
+Large titles should always be vertically balanced.
+Every section should feel like a professionally designed wedding invitation.
+Text Appearance
+
+Text should never suddenly appear.
+
+Instead:
+
+Fade in smoothly.
+Slight upward motion while appearing.
+Soft opacity transition.
+Luxury easing.
+Small stagger between heading and body.
+Decorative names appear last.
+
+Avoid:
+
+Pop animations
+Bounce
+Scale effects
+Fast movement
+Text Color
+
+Text colors should complement the luxury Rajwadi theme.
+
+Suggested hierarchy:
+
+Main Heading:
+Rich Gold (#B88A3C)
+
+Names:
+Royal Gold Gradient
+
+Body Text:
+Warm Charcoal (#3E352D)
+
+Subtitles:
+Muted Brown (#6B5A4A)
+
+Never use pure black or bright white.
+
+Add a subtle soft shadow or light glow only when required for readability.
+
+Text transitions between sections should be extremely smooth and premium.
+
+Section Transition
+
+Scrolling should feel magical.
+
+Every section transition should include:
+
+Slow fade
+Gentle parallax
+Soft blur dissolve
+Smooth easing
+No hard cuts
+
+Scrolling should feel like turning pages of a luxury wedding invitation.
+
+Video Behaviour
+
+Every background video should:
+
+autoplay
+muted
+loop seamlessly
+cover full screen
+preserve aspect ratio
+
+Videos must never:
+
+restart visibly
+flicker
+jump
+pause
+resize
+
+Video transitions between sections must be perfectly smooth.
+
+Audio Behaviour
+
+Only background audio should play.
+
+Video files must remain silent.
+
+Audio should:
+
+autoplay after opening animation
+loop seamlessly
+never restart abruptly
+include fade in
+include fade out when necessary
+Scroll Behaviour
+
+Scrolling should feel premium.
+
+No sudden movement.
+
+Use smooth inertia scrolling.
+
+Section animations should begin only when approximately 40–50% of the section becomes visible.
+
+Performance
+
+Even with multiple videos:
+
+maintain 60 FPS whenever possible
+lazy load videos
+preload only upcoming assets
+avoid animation lag
+optimize rendering
+Responsive Design
+
+The website must work perfectly on:
+
+Desktop
+Tablet
+Mobile
+
+Maintain consistent spacing, typography and proportions on every screen size.
+
+Final Feel
+
+The final experience should feel like:
+
+a luxury royal palace invitation
+timeless
+elegant
+emotional
+peaceful
+sophisticated
+handcrafted
+premium
+
+Visitors should feel they have entered a royal Rajwadi wedding invitation rather than simply browsing a website.
+Note: all videos and audio present in assets folder and transition between page or section must be very smooth and well animated.
+
+1. First page a button say tap to open when click a video in background played with envelop openining sound(video name v1 and audio name a1)
+From here audio a2 is used and all video must be silent
+2. The very first section use video (v2) as a background, here is the text I want 
+SHREE GANESHAYE NAMAH
+SHREE CHAMUNDAYE NAMAH
+SHREE VISHWAKARMAYE NAMAH
+
+WITH BLESSING OF SHRIMATI HARYPARIDEVI JI W/O
+BRAHMALIN GAUSVEI SANT SHRI PADMARAM JI KULARIA SUTHAR
+
+IS CORDIALLY INVITED YOU AND YOUR FAMILY ON
+AUSPICIOUS OCCASION OF TEEJ & RING CEREMONY RITUAL
+FOR HER GRANDSON
+
+Purushotham
+
+SON OF
+
+Mahendra
+
+WITH
+
+Priya
+
+GRANDDAUGHTER OF
+
+SHAYARI JI W/O BHAIRAVLAL JI MISTRY
+
+DAUGHTER OF
+
+Durga JI W/O Dularam JI Mistry
+3. after scroll further use video v3 as a background here is the text I want.
+
+30/08/2026
+Jodhpur
+
+Join us as we gather to celebrate love laughter and the beautiful beginning of a new chapter
+
+4. after scroll further use video v4 as a background here is the text I want.
+Lets celebrate
+Sunday
+30
+August 2026
+Amritam Palace, Jodhpur
+
+a. use image "welcome" welcome 2 pm The royal hall
+b. use image "teej" Teej 4 PM Ojas glass hall
+c. use image "engagement" engagement followed by dinner 8:30pm The lawn dinner at lawn followed by dinner
+
+5. after scroll further use video v5 as a background here is the text I want 
+Dress Code
+
+ELEGANT FORMAL ATTIRE
+
+
+Guests are requested to dress in
+sophisticated formal wear.
+
+Men: Tailored suits, tuxedos,
+or dinner jackets.
+
+Women: Elegant gowns or
+chic evening ensembles.
+
+
+Jodhpur – experiences temperatures ranging between 24°C and 33°C
+with occasional monsoon showers.
+
+Kindly pack accordingly for both sunshine and light rain.
+
+
+With plenty of dancing and festivities planned, we suggest choosing
+comfortable footwear that will carry you effortlessly through the celebrations.
+
+The suggested attire is intended purely as inspiration.
+Please feel free to dress in whatever makes you feel most comfortable.
+
+6. after scroll further use image v6 as a background here is the text I want 
+Sharing the Joy
+
+Suthars
+
+SHRIMATI Shantidevi JI
+SHRI P Jeturam JI
+
+Keshu
+&
+Mahendra
+
+Neelam
+&
+Shravan
+
+Premi
+&
+Madhuram
+
+
+Sharmas
+
+SHRIMATI Shayari JI
+SHRI Bhairavlal JI
+
+Saroj
+&
+Sohanlal
+
+Durga
+&
+Dularam
+
+Sadu
+&
+Pannalal
+
+Santosh Ji
+&
+Dipu Ji
+
+
+We look forward to
+your presence and blessings.
+
+
+7. after scroll further last secction use same image v6 as a background here is the text I want 
+click here for the direction - https://maps.app.goo.gl/pPpUn15ve3cwP6Vj7
+contact numbers - 9448377388, 9916775880, 9036237915
+
+
