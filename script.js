@@ -186,6 +186,41 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    // --- Countdown Timer Logic ---
+    function initializeCountdown() {
+        // Target date: 30th August 2026, 2:00 PM
+        const targetDate = new Date("2026-08-30T14:00:00").getTime();
+        
+        setInterval(() => {
+            const daysEl = document.getElementById('countdown-days');
+            const hoursEl = document.getElementById('countdown-hours');
+            const minutesEl = document.getElementById('countdown-minutes');
+            
+            if (daysEl && hoursEl && minutesEl) {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                
+                if (distance < 0) {
+                    daysEl.innerText = "00";
+                    hoursEl.innerText = "00";
+                    minutesEl.innerText = "00";
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                
+                daysEl.innerText = days.toString().padStart(2, '0');
+                hoursEl.innerText = hours.toString().padStart(2, '0');
+                minutesEl.innerText = minutes.toString().padStart(2, '0');
+            }
+        }, 1000);
+    }
+    
+    // Start the countdown
+    initializeCountdown();
+
     // --- Scroll Forwarding for Desktop ---
     // If the user scrolls outside the cinematic wrapper (on the dark background)
     window.addEventListener('wheel', (e) => {
