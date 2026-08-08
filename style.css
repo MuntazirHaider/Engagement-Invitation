@@ -415,7 +415,7 @@ body {
 
 .img-wrapper {
     width: 100%;
-    height: 110px;
+    height: 200px;
     overflow: hidden;
     margin-bottom: 0.6rem;
     border: 1px solid var(--gold-main);
@@ -450,6 +450,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    margin: 0px;
 }
 
 .family-column {
@@ -526,4 +527,508 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+/* =====================================================
+   ENHANCEMENT 1 — ORNAMENT DIVIDER
+   ===================================================== */
+.ornament-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    margin: 0.8rem auto;
+    color: var(--gold-main);
+    opacity: 0.7;
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-main), transparent);
+    animation: shimmerLine 3s ease-in-out infinite;
+}
+
+.ornament-divider span {
+    font-size: 0.55rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-family: var(--font-heading);
+}
+
+@keyframes shimmerLine {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* =====================================================
+   ENHANCEMENT 2 — WELCOME BUTTON HALO
+   ===================================================== */
+.open-btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.btn-halo-ring {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(184, 138, 60, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: haloPulse 3s ease-in-out infinite;
+}
+
+.btn-halo-ring::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid rgba(184, 138, 60, 0.2);
+    animation: haloPulse 3s ease-in-out infinite 0.4s;
+}
+
+.btn-halo-ring::after {
+    content: '';
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    border: 1px solid rgba(184, 138, 60, 0.08);
+    animation: haloPulse 3s ease-in-out infinite 0.8s;
+}
+
+.btn-halo-icon {
+    font-size: 1.4rem;
+    filter: drop-shadow(0 0 6px rgba(184, 138, 60, 0.8));
+}
+
+@keyframes haloPulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.06);
+    }
+}
+
+/* Gold shimmer sweep on the welcome button text */
+#open-btn {
+    background-image: linear-gradient(110deg,
+            transparent 30%,
+            rgba(255, 215, 120, 0.5) 50%,
+            transparent 70%);
+    background-size: 250% 100%;
+    background-position: 100% 0;
+    animation: btnShimmer 4s ease-in-out infinite;
+}
+
+@keyframes btnShimmer {
+    0% {
+        background-position: 150% 0;
+    }
+
+    60% {
+        background-position: -50% 0;
+    }
+
+    100% {
+        background-position: -50% 0;
+    }
+}
+
+/* =====================================================
+   ENHANCEMENT 3 — INVITATION CARD
+   ===================================================== */
+.invite-card {
+    position: relative;
+    padding: 1.5rem 1rem;
+    border: 1px solid rgba(184, 138, 60, 0.5);
+    box-shadow:
+        0 0 0 3px rgba(0, 0, 0, 0.6),
+        0 0 0 5px rgba(184, 138, 60, 0.25),
+        0 8px 30px rgba(0, 0, 0, 0.5);
+    background: rgba(30, 20, 10, 0.45);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 2px;
+    width: 100%;
+}
+
+/* Corner decorations */
+.invite-card::before,
+.invite-card::after {
+    content: '✦';
+    position: absolute;
+    font-size: 0.65rem;
+    color: var(--gold-main);
+    opacity: 0.7;
+}
+
+.invite-card::before {
+    top: 6px;
+    left: 8px;
+}
+
+.invite-card::after {
+    bottom: 6px;
+    right: 8px;
+}
+
+/* =====================================================
+   ENHANCEMENT 4 — COUNTDOWN PILLS & WAX SEAL
+   ===================================================== */
+.countdown-pill-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(184, 138, 60, 0.25);
+}
+
+.countdown-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(184, 138, 60, 0.1);
+    border: 1px solid rgba(184, 138, 60, 0.35);
+    border-radius: 8px;
+    padding: 0.4rem 0.7rem;
+    backdrop-filter: blur(8px);
+    min-width: 52px;
+    box-shadow: 0 0 10px rgba(184, 138, 60, 0.08);
+}
+
+.countdown-pill .countdown-value {
+    font-family: var(--font-heading);
+    font-size: clamp(1.3rem, 5.5vw, 2rem);
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(212, 174, 106, 0.5);
+    line-height: 1;
+}
+
+.countdown-pill .countdown-label {
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9b99a;
+    margin-top: 3px;
+}
+
+.countdown-pill-sep {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--gold-main);
+    margin-bottom: 14px;
+    animation: pulse 2s infinite var(--ease-luxury);
+}
+
+/* Wax Seal */
+.wax-seal {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #7a1a1a, #3d0a0a);
+    border: 2px solid rgba(184, 138, 60, 0.6);
+    box-shadow:
+        0 0 0 2px rgba(184, 138, 60, 0.2),
+        0 4px 14px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 0.8rem auto;
+    flex-shrink: 0;
+}
+
+.wax-seal-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+    margin-top: 5px;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
+}
+
+.wax-seal-text {
+    font-size: 0.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-family: var(--font-heading);
+    margin-top: 2px;
+    opacity: 0.9;
+}
+
+/* =====================================================
+   ENHANCEMENT 5 — EVENTS TIMELINE
+   ===================================================== */
+.events-timeline {
+    position: relative;
+    width: 100%;
+    padding: 0.5rem 0;
+    margin-top: 0.8rem;
+}
+
+/* Central vertical line */
+.events-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold-main) 10%, var(--gold-main) 90%, transparent);
+    transform-origin: top center;
+    animation: timelineDraw 1.5s var(--ease-luxury) forwards;
+}
+
+@keyframes timelineDraw {
+    from {
+        clip-path: inset(0 0 100% 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0% 0);
+    }
+}
+
+.timeline-event {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Central dot on the line */
+.timeline-dot {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--gold-light), var(--gold-main));
+    border: 2px solid var(--charcoal);
+    box-shadow: 0 0 10px rgba(184, 138, 60, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    z-index: 2;
+    /* Center it on the timeline */
+    margin-top: 0.3rem;
+    position: relative;
+}
+
+.timeline-content {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(184, 138, 60, 0.25);
+    border-radius: 6px;
+    padding: 0.6rem;
+    backdrop-filter: blur(6px);
+    text-align: left;
+}
+
+.timeline-content .img-wrapper {
+    height: 150px;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(184, 138, 60, 0.3);
+}
+
+.time-badge {
+    display: inline-block;
+    background: rgba(184, 138, 60, 0.2);
+    border: 1px solid rgba(184, 138, 60, 0.4);
+    border-radius: 20px;
+    padding: 5px 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-family: var(--font-heading);
+    margin-bottom: 0.3rem;
+}
+
+/* =====================================================
+   ENHANCEMENT 6 — DRESS CODE SWATCHES
+   ===================================================== */
+.color-swatches {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(184, 138, 60, 0.4);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+}
+
+.swatch:hover {
+    transform: scale(1.25);
+    box-shadow: 0 0 8px rgba(184, 138, 60, 0.5);
+}
+
+/* =====================================================
+   ENHANCEMENT 7 — FAMILY DIVIDER & GLOW
+   ===================================================== */
+.family-grid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.family-column {
+    text-align: center;
+    padding: 0 0.5rem;
+    flex: 1;
+    min-width: 120px;
+}
+
+.family-divider {
+    width: 1px;
+    align-self: stretch;
+    background: linear-gradient(to bottom, transparent, var(--gold-main) 20%, var(--gold-main) 80%, transparent);
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.family-divider::after {
+    content: '◆';
+    color: var(--gold-main);
+    font-size: 0.6rem;
+    background: var(--charcoal);
+    padding: 2px 0;
+}
+
+/* Glow on "Sharing the Joy" */
+.family-title-glow {
+    text-shadow:
+        0 0 20px rgba(184, 138, 60, 0.6),
+        0 0 40px rgba(184, 138, 60, 0.3);
+}
+
+/* =====================================================
+   ENHANCEMENT 8 — RSVP CONTACT CARDS
+   ===================================================== */
+.you-are-invited {
+    font-family: var(--font-names);
+    font-size: clamp(2rem, 8vw, 3rem);
+    color: var(--gold-light);
+    text-shadow:
+        0 0 20px rgba(184, 138, 60, 0.7),
+        0 0 40px rgba(184, 138, 60, 0.3);
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+}
+
+.contact-cards-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    /* width: 100%; */
+    margin-top: 0.8rem;
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: fit-content;
+    background: rgba(184, 138, 60, 0.07);
+    border: 1px solid rgba(184, 138, 60, 0.25);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    backdrop-filter: blur(8px);
+    text-decoration: none;
+    color: var(--ivory);
+    transition: all 0.3s var(--ease-luxury);
+}
+
+.contact-card:hover {
+    background: rgba(184, 138, 60, 0.18);
+    border-color: rgba(184, 138, 60, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(184, 138, 60, 0.2);
+    color: var(--gold-light);
+}
+
+.contact-card-icon {
+    font-size: 1rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(184, 138, 60, 0.15);
+    border: 1px solid rgba(184, 138, 60, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-card-info {
+    text-align: left;
+}
+
+.contact-card-label {
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-main);
+    font-family: var(--font-heading);
+    display: block;
+    margin-bottom: 1px;
+}
+
+.contact-card-number {
+    font-family: var(--font-heading);
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+    color: var(--ivory);
+    letter-spacing: 1px;
 }
