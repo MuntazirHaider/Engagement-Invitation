@@ -63,12 +63,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Play video and audio
         audioEnvelope.playbackRate = 0.75;
         audioEnvelope.currentTime = 0;
-        videoWelcome.playbackRate = 2;
-        videoWelcome.play().catch(e => console.log("Video play failed:", e));
-        audioEnvelope.play().catch(e => console.log("Audio play failed:", e));
 
-        // Wait for video to finish
-        videoWelcome.onended = () => {
+        let transitionCalled = false;
+        const transitionToMain = () => {
+            if (transitionCalled) return;
+            transitionCalled = true;
+
             // Fade out welcome page
             welcomePage.classList.add('fade-out');
 
@@ -78,10 +78,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Show flower overlay and audio control button
             audioControl.classList.remove('hidden');
             if (flowerOverlay) {
-                flowerOverlay.classList.remove('hidden');
-                setTimeout(() => {
-                    flowerOverlay.style.opacity = '1';
-                }, 100);
+                // Detect Safari / iOS since they do not support WebM transparency (VP9 alpha)
+                // and would render the transparent video as a solid black screen
+                const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                
+                if (isIOS || isSafari) {
+                    flowerOverlay.style.display = 'none';
+                    console.log("WebM flower overlay disabled on iOS/Safari to prevent black screen.");
+                } else {
+                    flowerOverlay.classList.remove('hidden');
+                    setTimeout(() => {
+                        flowerOverlay.style.opacity = '1';
+                    }, 100);
+                }
             }
 
             // Wait for fade out to complete
@@ -96,6 +106,36 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }, 2000);
         };
+
+        // Safety fallback: if video ended doesn't fire (e.g. low power mode or load failure), force transition after 4 seconds
+        const safetyTimeout = setTimeout(() => {
+            console.log("Safety timeout triggered: transitioning to main page.");
+            transitionToMain();
+        }, 4000);
+
+        try {
+            videoWelcome.playbackRate = 2;
+        } catch (e) {
+            console.log("Failed to set video welcome playbackRate:", e);
+        }
+
+        videoWelcome.play()
+            .then(() => {
+                videoWelcome.onended = () => {
+                    clearTimeout(safetyTimeout);
+                    transitionToMain();
+                };
+            })
+            .catch(e => {
+                console.log("Video play failed:", e);
+                clearTimeout(safetyTimeout);
+                // Transition immediately if play is blocked/failed
+                transitionToMain();
+            });
+
+        audioEnvelope.play().catch(e => {
+            console.log("Audio play failed:", e);
+        });
     });
 
     // --- Audio Control Logic ---
