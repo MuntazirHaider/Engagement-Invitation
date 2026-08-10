@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function loadAllSections() {
         await Promise.all([
-            loadSection('sections/invitation.html', 'section-invitation-container'),
             loadSection('sections/couple.html', 'section-couple-container'),
+            loadSection('sections/invitation.html', 'section-invitation-container'),
             loadSection('sections/date.html', 'section-date-container'),
             loadSection('sections/events.html', 'section-events-container'),
             loadSection('sections/dress-code.html', 'section-dress-code-container'),
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // and would render the transparent video as a solid black screen
                 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
                 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-                
+
                 if (isIOS || isSafari) {
                     flowerOverlay.style.display = 'none';
                     console.log("WebM flower overlay disabled on iOS/Safari to prevent black screen.");
@@ -231,34 +231,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     function initializeCountdown() {
         // Target date: 30th August 2026, 2:00 PM
         const targetDate = new Date("2026-08-30T14:00:00").getTime();
-        
+
         setInterval(() => {
             const daysEl = document.getElementById('countdown-days');
             const hoursEl = document.getElementById('countdown-hours');
             const minutesEl = document.getElementById('countdown-minutes');
-            
+
             if (daysEl && hoursEl && minutesEl) {
                 const now = new Date().getTime();
                 const distance = targetDate - now;
-                
+
                 if (distance < 0) {
                     daysEl.innerText = "00";
                     hoursEl.innerText = "00";
                     minutesEl.innerText = "00";
                     return;
                 }
-                
+
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                
+
                 daysEl.innerText = days.toString().padStart(2, '0');
                 hoursEl.innerText = hours.toString().padStart(2, '0');
                 minutesEl.innerText = minutes.toString().padStart(2, '0');
             }
         }, 1000);
     }
-    
+
     // Start the countdown
     initializeCountdown();
 
@@ -274,12 +274,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (e.deltaMode === 0) { // DOM_DELTA_PIXEL
                 delta *= 1.5; // Standard multiplier, 5 was likely too fast without smooth scroll
             }
-            
+
             // Use behavior: 'auto' to bypass the CSS 'scroll-behavior: smooth'
             // which was causing the lag by queuing up hundreds of smooth animations
-            cinematicWrapper.scrollBy({ 
-                top: delta, 
-                behavior: 'auto' 
+            cinematicWrapper.scrollBy({
+                top: delta,
+                behavior: 'auto'
             });
         }
     }, { passive: false }); // Must be false to use e.preventDefault()
