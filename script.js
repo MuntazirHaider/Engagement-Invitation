@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadAllSections() {
         await Promise.all([
             loadSection('sections/invitation.html', 'section-invitation-container'),
+            loadSection('sections/couple.html', 'section-couple-container'),
             loadSection('sections/date.html', 'section-date-container'),
             loadSection('sections/events.html', 'section-events-container'),
             loadSection('sections/dress-code.html', 'section-dress-code-container'),
